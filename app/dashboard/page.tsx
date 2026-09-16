@@ -7,10 +7,10 @@ export default async function DashboardHome() {
   const projects = await getProjects();
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-12">
       <div>
-        <p className="mono-label text-nm-black/50 mb-1">Resumen</p>
-        <h1 className="text-3xl">
+        <p className="mono-label mb-2">Resumen</p>
+        <h1 className="text-4xl sm:text-5xl">
           Hola, {profile?.full_name?.split(" ")[0] ?? "equipo"}.
         </h1>
       </div>
@@ -18,25 +18,25 @@ export default async function DashboardHome() {
       <MetaAdsWidget />
 
       <div>
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-xl">Proyectos {profile?.role === "worker" ? "asignados" : ""}</h2>
-          <Link href="/dashboard/proyectos" className="mono-label underline">
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-2xl">Proyectos {profile?.role === "worker" ? "asignados" : ""}</h2>
+          <Link href="/dashboard/proyectos" className="mono-label underline underline-offset-4">
             Ver todos
           </Link>
         </div>
         {projects.length === 0 ? (
           <p className="text-sm text-nm-black/60">Todavía no hay proyectos cargados.</p>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {projects.slice(0, 6).map((p) => (
               <Link
                 key={p.id}
                 href={`/dashboard/proyectos/${p.id}`}
-                className="border-2 border-nm-black p-4 bg-surface hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--nm-black)] transition-transform"
+                className="nm-card nm-card-hover p-6"
               >
-                <p className="mono-label text-nm-black/50 mb-1">{p.status}</p>
-                <p className="font-serif font-bold text-lg">{p.name}</p>
-                <p className="text-sm text-nm-black/60">{p.client_name}</p>
+                <p className="mono-label mb-2">{p.status}</p>
+                <p className="font-serif font-semibold text-xl">{p.name}</p>
+                <p className="text-sm text-nm-black/60 mt-1">{p.client_name}</p>
               </Link>
             ))}
           </div>

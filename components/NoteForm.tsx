@@ -16,20 +16,16 @@ export default function NoteForm({ projectId }: { projectId: string }) {
           ref.current?.reset();
         })
       }
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-3"
     >
       <textarea
         name="body"
         rows={3}
         placeholder="Escribe una nota sobre este proyecto..."
         required
-        className="border-2 border-nm-black p-3 bg-surface outline-none resize-none"
+        className="nm-card p-4 outline-none resize-none text-sm"
       />
-      <button
-        type="submit"
-        disabled={pending}
-        className="self-start mono-label bg-nm-black text-nm-cream px-4 py-2 disabled:opacity-50"
-      >
+      <button type="submit" disabled={pending} className="nm-btn-primary self-start !py-2 !px-5">
         {pending ? "Guardando..." : "Agregar nota"}
       </button>
     </form>

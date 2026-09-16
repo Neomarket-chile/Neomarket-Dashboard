@@ -41,15 +41,13 @@ export default function MetaAdsWidget() {
   }, []);
 
   if (!state) {
-    return (
-      <div className="border-2 border-nm-black p-6 bg-surface animate-pulse h-40" />
-    );
+    return <div className="nm-card p-8 animate-pulse h-40" />;
   }
 
   if (!state.configured) {
     return (
-      <div className="border-2 border-dashed border-nm-black/40 p-6 bg-surface">
-        <p className="mono-label text-nm-black/50 mb-2">Meta Ads</p>
+      <div className="nm-card p-8 border-dashed">
+        <p className="mono-label mb-2">Meta Ads</p>
         <p className="text-sm text-nm-black/70">{state.message}</p>
       </div>
     );
@@ -57,9 +55,9 @@ export default function MetaAdsWidget() {
 
   if (state.error) {
     return (
-      <div className="border-2 border-nm-black p-6 bg-surface">
-        <p className="mono-label text-nm-black/50 mb-2">Meta Ads</p>
-        <p className="text-sm text-red-700">{state.error}</p>
+      <div className="nm-card p-8">
+        <p className="mono-label mb-2">Meta Ads</p>
+        <p className="text-sm text-nm-red">{state.error}</p>
       </div>
     );
   }
@@ -73,21 +71,21 @@ export default function MetaAdsWidget() {
       (rows.filter((r) => r.purchase_roas?.[0]?.value).length || 1) || 0;
 
   return (
-    <div className="border-2 border-nm-black p-6 bg-surface">
-      <div className="flex items-center justify-between mb-4">
-        <p className="mono-label text-nm-black/50">Meta Ads · últimos 7 días</p>
-        <span className="mono-label text-nm-black/40">en vivo</span>
+    <div className="nm-card p-8">
+      <div className="flex items-center justify-between mb-6">
+        <p className="mono-label">Meta Ads · últimos 7 días</p>
+        <span className="mono-label text-nm-red">● en vivo</span>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         <Stat label="Gasto" value={`$${totalSpend.toLocaleString("es-CL")}`} />
         <Stat label="Impresiones" value={totalImpressions.toLocaleString("es-CL")} />
         <Stat label="Clics" value={totalClicks.toLocaleString("es-CL")} />
         <Stat label="ROAS prom." value={`${avgRoas.toFixed(2)}x`} />
       </div>
       {rows.length > 0 && (
-        <div className="mt-6 divide-y divide-nm-black/10">
+        <div className="mt-8 divide-y divide-nm-black/8">
           {rows.slice(0, 5).map((r, i) => (
-            <div key={i} className="flex justify-between py-2 text-sm">
+            <div key={i} className="flex justify-between py-3 text-sm">
               <span className="truncate max-w-[60%]">{r.campaign_name}</span>
               <span className="font-mono">${parseFloat(r.spend || "0").toLocaleString("es-CL")}</span>
             </div>
@@ -101,8 +99,8 @@ export default function MetaAdsWidget() {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-2xl font-serif font-bold">{value}</div>
-      <div className="mono-label text-nm-black/50">{label}</div>
+      <div className="text-2xl font-serif font-semibold">{value}</div>
+      <div className="mono-label mt-1">{label}</div>
     </div>
   );
 }

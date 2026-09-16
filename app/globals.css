@@ -2,8 +2,9 @@
 
 /* ============================================================
    NEOMARKET DASHBOARD — Identidad visual
-   Paleta definida para @neomarket.chile:
-   rojo oscuro de fondo, crema para texto, negro para acentos.
+   Paleta @neomarket.chile (rojo, crema, negro) con un lenguaje
+   editorial-artesanal: tipografía serif grande, espacio generoso,
+   bordes suaves y componentes minimalistas.
    ============================================================ */
 :root {
   --nm-red: #430201;
@@ -16,6 +17,10 @@
   --foreground: var(--nm-black);
   --surface: #ffffff;
   --accent: var(--nm-red);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.85rem;
+  --radius-lg: 1.5rem;
 }
 
 @theme inline {
@@ -41,13 +46,93 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: color-mix(in srgb, var(--nm-black) 55%, transparent);
+}
+
+/* ---- Componentes reutilizables: lenguaje editorial-artesanal ---- */
+
+.nm-card {
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--nm-black) 9%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--nm-black) 4%, transparent);
+}
+
+.nm-card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.nm-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--nm-red) 30%, transparent);
+  box-shadow: 0 16px 32px -12px color-mix(in srgb, var(--nm-red) 25%, transparent);
+}
+
+.nm-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--nm-red);
+  color: var(--nm-cream);
+  border-radius: 999px;
+  padding: 0.8rem 1.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.nm-btn-primary:hover {
+  background: var(--nm-red-light);
+  transform: translateY(-1px);
+}
+.nm-btn-primary:disabled {
+  opacity: 0.5;
+  transform: none;
+}
+
+.nm-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--nm-black);
+  border: 1px solid color-mix(in srgb, var(--nm-black) 25%, transparent);
+  border-radius: 999px;
+  padding: 0.75rem 1.65rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.nm-btn-outline:hover {
+  border-color: var(--nm-black);
+  background: color-mix(in srgb, var(--nm-black) 5%, transparent);
+}
+
+.nm-input {
+  border: none;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--nm-black) 25%, transparent);
+  background: transparent;
+  padding: 0.6rem 0.1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.nm-input:focus {
+  border-color: var(--nm-red);
+}
+
+.nm-divider-wave {
+  display: block;
+  width: 100%;
+  height: 48px;
+  color: var(--nm-cream);
 }
