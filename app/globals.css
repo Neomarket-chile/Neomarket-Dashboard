@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* ============================================================
+   NEOMARKET DASHBOARD — Identidad visual
+   Paleta definida para @neomarket.chile:
+   rojo oscuro de fondo, crema para texto, negro para acentos.
+   ============================================================ */
+:root {
+  --nm-red: #430201;
+  --nm-red-light: #5a0503;
+  --nm-cream: #f3efe7;
+  --nm-black: #090401;
+  --nm-gray: #b9ad9c;
+
+  --background: var(--nm-cream);
+  --foreground: var(--nm-black);
+  --surface: #ffffff;
+  --accent: var(--nm-red);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-nm-red: var(--nm-red);
+  --color-nm-red-light: var(--nm-red-light);
+  --color-nm-cream: var(--nm-cream);
+  --color-nm-black: var(--nm-black);
+  --color-nm-gray: var(--nm-gray);
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
