@@ -1,4 +1,4 @@
-"use server";
+﻿"use server";
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -11,7 +11,7 @@ export async function signIn(_prevState: unknown, formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    return { error: "Correo o contraseña incorrectos." };
+    return { error: `[DEBUG] ${error.name}: ${error.message} (status ${error.status ?? "?"})` };
   }
 
   redirect("/dashboard");
